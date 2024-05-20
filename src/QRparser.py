@@ -2,7 +2,7 @@ import cv2
 from pyzbar.pyzbar import decode
 
 def generate_active_attributes():
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(1)
     active_attributes = {
         "cloudy": False,
         "night": False,
@@ -20,34 +20,31 @@ def generate_active_attributes():
 
         active_attributes["cloudy"] = False
         active_attributes["night"] = False
-
         active_attributes["car"] = 0
         active_attributes["electricCars"] = 0
         active_attributes["electricScooters"] = 0
         active_attributes["chargingElectricCars"] = 0
         active_attributes["chargingElectricScooters"] = 0
 
-        height, width, _ = frame.shape
-        top_left_corner = frame[:height//2, :width//2]
-        top_right_corner = frame[:height//2, width//2:]
-        bottom_left_corner = frame[height//2:, :width//2]
-        bottom_right_corner = frame[height//2:, width//2:]
-
-        for corner_frame in [top_left_corner, top_right_corner, bottom_left_corner, bottom_right_corner]:
-            decoded_objects = decode(corner_frame)
-            for obj in decoded_objects:
-                data = obj.data.decode().lower().strip()
-                if data == "car":
-                    active_attributes["car"] += 1
-                elif data == "electriccar":
+        decoded_objects = decode(frame)
+        for obj in decoded_objects:
+            data = obj.data.decode().strip()
+            if data == "night":
+                active_attributes["night"] = True
+            elif data == "cloudy":
+                active_attributes["cloudy"] = True
+            elif data == "car":
+                active_attributes["car"] += 1
+            elif data == "electricCars" or data == "electricScooters":
+                if data == "electricCars":
                     active_attributes["electricCars"] += 1
-                elif data == "electricscooter":
+                else:
                     active_attributes["electricScooters"] += 1
-
-        if active_attributes["electricCars"] > 0:
-            active_attributes["chargingElectricCars"] += 1
-        if active_attributes["electricScooters"] > 0:
-            active_attributes["chargingElectricScooters"] += 1
+                if obj.rect.left < frame.shape[1] // 2 and obj.rect.top < frame.shape[0] // 2:
+                    if data == "electricCars":
+                        active_attributes["chargingElectricCars"] += 1
+                    elif data == "electricScooters":
+                        active_attributes["chargingElectricScooters"] += 1
 
         yield active_attributes
 
