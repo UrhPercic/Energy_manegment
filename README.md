@@ -30,7 +30,7 @@ To run this API, you need Python installed on your system along with several lib
      python -m venv venv
      ```
    - ```bash
-     `venv\Scripts\activate`
+     source venv\Scripts\activate
      ```
 
 ## Usage
