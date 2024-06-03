@@ -26,7 +26,7 @@ To run this API, you need Python installed on your system along with several lib
 ## Usage
 
 1. **Start the API server**:
-  - `python api.py`
+  - `python Api.py`
 
 This will start the Flask server in debug mode on the default port 5000.
 
