@@ -13,20 +13,20 @@ The Active Attributes API is designed to continuously scan video feeds for QR co
 To run this API, you need Python installed on your system along with several libraries including Flask, OpenCV, and Pyzbar.
 
 1. **Clone the repository**:
-  - `git clone https://your-repository-url.git`
-  - `cd your-repository-directory`
+  - ``` git clone https://your-repository-url.git ``` 
+  - ``` cd your-repository-directory ```
 
 2. **Install dependencies**:
-  - `pip install Flask opencv-python pyzbar`
+  - ``` pip install Flask opencv-python pyzbar ```
 
 3. **Set up a virtual environment (optional)**:
-  - `python -m venv venv`
-  - `source venv/bin/activate` # On Windows use `venv\Scripts\activate`
+  - ``` python -m venv venv ```
+  - ``` source venv/bin/activate ``` # On Windows use ``` venv\Scripts\activate ```
 
 ## Usage
 
 1. **Start the API server**:
-  - `python Api.py`
+ - ``` python Api.py ```
 
 This will start the Flask server in debug mode on the default port 5000.
 
