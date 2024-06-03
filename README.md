@@ -1,4 +1,4 @@
-# Energy_manegment
+# Energy Management
 
 The Active Attributes API is designed to continuously scan video feeds for QR codes and extract defined attributes related to environmental and vehicular conditions. This project leverages Flask for the API server and uses OpenCV and Pyzbar for decoding QR codes from live video feeds.
 
@@ -13,36 +13,47 @@ The Active Attributes API is designed to continuously scan video feeds for QR co
 To run this API, you need Python installed on your system along with several libraries including Flask, OpenCV, and Pyzbar.
 
 1. **Clone the repository**:
-  - ``` git clone https://your-repository-url.git ``` 
-  - ``` cd your-repository-directory ```
+   - ```bash
+     git clone https://your-repository-url.git
+     ```
+   - ```bash
+     cd your-repository-directory
+     ```
 
 2. **Install dependencies**:
-  - ``` pip install Flask opencv-python pyzbar ```
+   - ```bash
+     pip install Flask opencv-python pyzbar
+     ```
 
 3. **Set up a virtual environment (optional)**:
-  - ``` python -m venv venv ```
-  - ``` source venv/bin/activate ``` # On Windows use ``` venv\Scripts\activate ```
+   - ```bash
+     python -m venv venv
+     ```
+   - ```bash
+     source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+     ```
 
 ## Usage
 
 1. **Start the API server**:
- - ``` python Api.py ```
-
-This will start the Flask server in debug mode on the default port 5000.
+   - ```bash
+     python api.py
+     ```
+   This will start the Flask server in debug mode on the default port 5000.
 
 2. **Access the API**:
-  - To get the current active attributes, use the following GET request:
-    ```
-    curl http://localhost:5000/api/attributes
-    ```
-This endpoint returns a JSON object with the currently detected attributes such as:
-```json
-{
-  "cloudy": false,
-  "night": true,
-  "car": 3,
-  "electricCars": 1,
-  "electricScooters": 2,
-  "chargingElectricCars": 1,
-  "chargingElectricScooters": 1
-}
+   - To get the current active attributes, use the following GET request:
+     ```bash
+     curl http://localhost:5000/api/attributes
+     ```
+   This endpoint returns a JSON object with the currently detected attributes such as:
+   ```json
+   {
+     "cloudy": false,
+     "night": true,
+     "car": 3,
+     "electricCars": 1,
+     "electricScooters": 2,
+     "chargingElectricCars": 1,
+     "chargingElectricScooters": 1
+   }
