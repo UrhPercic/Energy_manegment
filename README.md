@@ -30,14 +30,14 @@ To run this API, you need Python installed on your system along with several lib
      python -m venv venv
      ```
    - ```bash
-     source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+     `venv\Scripts\activate`
      ```
 
 ## Usage
 
 1. **Start the API server**:
    - ```bash
-     python api.py
+     python Api.py
      ```
    This will start the Flask server in debug mode on the default port 5000.
 
